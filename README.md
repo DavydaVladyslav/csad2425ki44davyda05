@@ -21,6 +21,6 @@ used in next tasks.
 ### Technologies, Programming Language, and Hardware
 For the upcoming tasks, the following technologies, languages, and hardware will be used:
 
-Programming Language: JS
+Programming Language: JS С++
 Framework: ElectronJS
 Hardware: Arduino Uno
