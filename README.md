@@ -23,3 +23,4 @@ For the upcoming tasks, the following technologies, languages, and hardware will
 
 Programming Language: Python С++
 Hardware: Arduino Uno
+
