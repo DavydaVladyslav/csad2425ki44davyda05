@@ -18,8 +18,9 @@ The point of this course is to create an interesting project using hardware and 
 Details about technology, program language, and Hardware that will be
 used in next tasks.
 
-### Software
-The frontend part of application will be written using Console Application. 
+### Technologies, Programming Language, and Hardware
+For the upcoming tasks, the following technologies, languages, and hardware will be used:
 
-### Hardware
-Arduino uno will be used as a server. Programing language - Python
+Programming Language: Python С++
+Hardware: Arduino Uno
+
