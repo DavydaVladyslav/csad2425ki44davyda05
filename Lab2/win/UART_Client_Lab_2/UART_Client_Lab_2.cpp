@@ -2,42 +2,47 @@
 #include <iostream>
 #include <string>
 
+
+
+
 using namespace std;
 
 
-// Функція створення JSON
+//JSON creation function
 string createJSON(const string& message) {
     return "{\"message\":\"" + message + "\"}";
 }
 
-// Функція парсингу JSON
+//JSON parsing function
 string parseJSON(const string& json) {
-    size_t start = json.find("\"message\":\"") + 11; // 11 - це довжина ключа "message":"
-    size_t end = json.find("\"", start); // Знаходимо кінець значення
+    size_t start = json.find("\"message\":\"") + 11;
+    size_t end = json.find("\"", start); //Find the end of the value
 
     if (start != string::npos && end != string::npos) {
         return json.substr(start, end - start);
     }
 
-    return ""; // Якщо JSON некоректний
+    return ""; //If JSON is invalid
 }
 
 
 
+
 int main() {
-     /*Запит номера COM-порту у користувача*/
+
+    /*Request COM port number from user*/
     int portNumber;
     cout << "Enter COM port number (e.g., 6 for COM6): ";
     cin >> portNumber;
 
-    // Формування назви порту
+    //Generating a port name
     string portName_s = "COM" + to_string(portNumber);
     const char* portName = portName_s.c_str();
 
 
     /*const char* portName = "COM6";*/
 
-    // Відкриття COM-порту
+    //Opening COM port
     HANDLE hSerial = CreateFileA(portName, // portName.c_str()
         GENERIC_READ | GENERIC_WRITE,
         0,
@@ -52,7 +57,7 @@ int main() {
         return 1;
     }
 
-    // Налаштування параметрів порту
+    //Configure port parameters
     DCB dcbSerialParams = { 0 };
     dcbSerialParams.DCBlength = sizeof(dcbSerialParams);
 
@@ -73,7 +78,7 @@ int main() {
         return 1;
     }
 
-    // Налаштування тайм-аутів
+    //Setting timeouts
     COMMTIMEOUTS timeouts = { 0 };
     timeouts.ReadIntervalTimeout = 50;
     timeouts.ReadTotalTimeoutConstant = 50;
@@ -87,22 +92,22 @@ int main() {
 
     Sleep(2000);
 
-    // Цикл для безкінечної відправки повідомлень
+    //Loop for endlessly sending messages
     while (true) {
-        string message = "hello from pc";  // Повідомлення для відправки
+        string message = "hello from pc";  //Message to send
         string messageXML = createJSON(message);
         DWORD bytesWritten;
 
-        
 
-        // Відправка повідомлення до Arduino
+
+        //Sending a message to Arduino
         if (!WriteFile(hSerial, messageXML.c_str(), messageXML.size(), &bytesWritten, NULL)) {
             cerr << "Error writing to port" << endl;
             break;
         }
         cout << "Sent: " << message << " (" << messageXML << ")" << endl;
 
-        // Читання відповіді від Arduino
+        //Reading the response from Arduino
         char buffer[128];
         DWORD bytesRead;
 
@@ -117,11 +122,11 @@ int main() {
             break;
         }
 
-        // Затримка перед наступним запитом
+        //Delay before next request
         Sleep(1000);
     }
 
-    // Закриття COM-порту
+    //Closing COM port
     CloseHandle(hSerial);
     return 0;
 }

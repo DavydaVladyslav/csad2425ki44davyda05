@@ -1,3 +1,4 @@
 ﻿  UART_Client_Lab_2.cpp
-C:\Users\Vlad\Desktop\Lab2\win\UART_Client_Lab_2\UART_Client_Lab_2.cpp(99,68): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
-  UART_Client_Lab_2.vcxproj -> C:\Users\Vlad\Desktop\Lab2\win\UART_Client_Lab_2\x64\Debug\UART_Client_Lab_2.exe
+D:\GitHub prog\csad2425ki404davyda05\Lab2\win\UART_Client_Lab_2\UART_Client_Lab_2.cpp(99,68): warning C4267: аргумент: преобразование из "size_t" в "DWORD"; возможна потеря данных
+  LINK : не найден или не выполнена сборка D:\GitHub prog\csad2425ki404davyda05\Lab2\win\UART_Client_Lab_2\x64\Debug\UART_Client_Lab_2.exe при последней инкрементной компоновке; выполняется полная компоновка
+  UART_Client_Lab_2.vcxproj -> D:\GitHub prog\csad2425ki404davyda05\Lab2\win\UART_Client_Lab_2\x64\Debug\UART_Client_Lab_2.exe
