@@ -1,0 +1,47 @@
+name: Build Qt Client Project
+
+on:
+  push:
+    branches:
+      - develop
+      - feature/develop/task3
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: "6.8.0"
+          host: windows
+          target: desktop
+          arch: "win64_msvc2022_64"
+          tools: "tools_ifw tools_qtcreator,qt.tools.qtcreator"
+
+      - name: Configure CMake
+        run: |
+          cd build
+          cmake -DCMAKE_PREFIX_PATH=C:\Qt\6.8.0\msvc2022_64 ..\Lab3\win\Lab3_APKS
+
+      - name: Build Project
+        run: |
+          cd build
+          cmake --build . --config Release
+
+      - name: Deploy Qt dependencies
+        run: |
+          windeployqt build/Release/Lab3_APKS.exe
+
+      - name: Save build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: lab3-client-executable
+          path: build/Release
