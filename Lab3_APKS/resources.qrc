@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>assets/board_c.png</file>
+        <file>assets/x2c.png</file>
+        <file>assets/o2c.png</file>
+    </qresource>
+</RCC>
