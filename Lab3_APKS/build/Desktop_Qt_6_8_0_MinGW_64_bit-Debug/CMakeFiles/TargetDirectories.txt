@@ -1,0 +1,9 @@
+D:/Lab3_APKS/Lab3_APKS/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/Lab3_APKS.dir
+D:/Lab3_APKS/Lab3_APKS/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+D:/Lab3_APKS/Lab3_APKS/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+D:/Lab3_APKS/Lab3_APKS/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+D:/Lab3_APKS/Lab3_APKS/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/install.dir
+D:/Lab3_APKS/Lab3_APKS/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+D:/Lab3_APKS/Lab3_APKS/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+D:/Lab3_APKS/Lab3_APKS/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/Lab3_APKS_autogen_timestamp_deps.dir
+D:/Lab3_APKS/Lab3_APKS/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/Lab3_APKS_autogen.dir
