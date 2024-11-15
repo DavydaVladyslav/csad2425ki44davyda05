@@ -25,7 +25,7 @@ protected:
     }
 };
 
-
+//Tests for getJsonValue
 TEST_F(MainWindowTest, GetTagValue_ValidTag) {
     QJsonObject json;
     json["tag"] = "Hello";
@@ -64,13 +64,13 @@ TEST_F(MainWindowTest, GetTagValue_InvalidKey) {
     json["nt"] = "x";
 
     QString actual = mainWindow->getJsonValue(json, "invalid");
-    EXPECT_EQ(actual, ""); // Очікується, що повертається пустий рядок
+    EXPECT_EQ(actual, "");
 }
 
 
-// Тест для buildJSON
+// Tests for buildJSON
 TEST_F(MainWindowTest, BuildJson_ProducesCorrectOutput) {
-    // Ініціалізація полів
+    //Field initialization
     mainWindow->game_started = "1";
     mainWindow->connect_arduino = "1";
     mainWindow->game_mode = "mva";
@@ -81,13 +81,13 @@ TEST_F(MainWindowTest, BuildJson_ProducesCorrectOutput) {
     mainWindow->board[1][1] = "o";
     mainWindow->board[2][2] = "-";
 
-    // Очікуваний JSON (якщо є проблема з форматуванням або пробілами, ви можете перевірити тут)
+    //Expected JSON
     QString expectedJson = R"({"game_started": "1","connect_arduino": "1","game_mode": "mva","ai_strategy": "rand","message": "Game in progress","next_turn": "x","board": [["x", "", ""],["", "o", ""],["", "", "-"]]})";
 
-    // Виклик методу для отримання фактичного JSON
+    //Call method to get actual JSON
     QString actualJson = mainWindow->buildJSON();
 
-    // Виведення для перевірки
+    //Output for verification
     qDebug() << "Expected JSON: " << expectedJson;
     qDebug() << "Actual JSON: " << actualJson;
 
@@ -95,7 +95,7 @@ TEST_F(MainWindowTest, BuildJson_ProducesCorrectOutput) {
 
 
 
-// Тест для parseJSON
+// Tests for parseJSON
 TEST_F(MainWindowTest, ParseJSON_CorrectlyUpdatesValues) {
     QString json = R"({"con": "0","gs": "1","gm": "ava","ais": "win","msg": "test_msg","nt": "o","brd": {"c11": "o","c12": "","c13": "","c21": "","c22": "o","c23": "","c31": "","c32": "","c33": "-"}})";
 
@@ -117,7 +117,7 @@ TEST_F(MainWindowTest, ParseJSON_InvalidJson_ReturnsEarly) {
 
     mainWindow->parseJSON(invalidJson);
 
-    // Очікується, що значення не зміняться, бо JSON не правильний
+    //Values are not expected to change
     EXPECT_EQ(mainWindow->connect_arduino, "");
     EXPECT_EQ(mainWindow->game_started, "");
     EXPECT_EQ(mainWindow->game_mode, "");
@@ -132,7 +132,7 @@ TEST_F(MainWindowTest, ParseJSON_EmptyJson_ReturnsEarly) {
 
     mainWindow->parseJSON(emptyJson);
 
-    // Перевіряється, що значення не змінюються, бо JSON порожній
+    //Verifies that the values do not change because JSON is empty
     EXPECT_EQ(mainWindow->connect_arduino, "");
     EXPECT_EQ(mainWindow->game_started, "");
     EXPECT_EQ(mainWindow->game_mode, "");
@@ -144,7 +144,7 @@ TEST_F(MainWindowTest, ParseJSON_EmptyJson_ReturnsEarly) {
 
 
 
-// // Тест для resetValues
+// // Tests for resetValues
 TEST_F(MainWindowTest, ResetValues_SetsToInitialState) {
     mainWindow->game_started = "1";
     mainWindow->message = "msg here";
