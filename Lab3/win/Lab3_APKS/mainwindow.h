@@ -19,8 +19,29 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QString connect_arduino, game_started, game_mode, ai_strategy, message, next_turn;
+    QString board[3][3];
+    void loadComPorts();
+    bool connectArduino(const QString &port); // Функція для тестування Arduino
+    QString sendArduino();
+
+    void updateGameBoard();
+    void updateButtonIcon(QPushButton *button, const QString &value);
+
+    void parseJSON(QString input);
+
+    void add_player_turn(int row, int col);
+
+    void saveGameState(const QString& filePath);
+    void loadGameState(const QString& filePath);
+    void resetValues();
+    QString buildJSON();
+    QString getJsonValue(const QJsonObject& json, const QString& key);
+    //QString getTagValue();
+    //void add_player_turn_cb(QString board[3][3], int row, int col);
 
 private slots:
     void on_newButton_clicked();
@@ -50,19 +71,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
 
-    void loadComPorts();
-    bool connectArduino(const QString &port); // Функція для тестування Arduino
-    QString sendArduino();
 
-    void updateGameBoard();
-    void updateButtonIcon(QPushButton *button, const QString &value);
-
-    void parseJSON(QString input);
-
-    void add_player_turn(int row, int col);
-
-    void saveGameState(const QString& filePath);
-    void loadGameState(const QString& filePath);
     // QString getTagValue(const QString& response, const QString& tagName);
 };
 #endif // MAINWINDOW_H

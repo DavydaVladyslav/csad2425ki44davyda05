@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - develop
-      - feature/develop/task3
+      - feature/develop/task5
   pull_request:
     branches:
       - develop
@@ -45,3 +45,8 @@ jobs:
         with:
           name: lab3-client-executable
           path: build/Release
+
+      - name: Run Tests
+        run: |
+          cd build
+          ./Release/client_lab3_tests.exe
