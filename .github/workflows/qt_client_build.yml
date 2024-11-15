@@ -38,7 +38,7 @@ jobs:
 
       - name: Deploy Qt dependencies
         run: |
-          windeployqt build/Release/Lab3_APKS.exe
+          windeployqt build/Release/client_lab3.exe
 
       - name: Save build artifacts
         uses: actions/upload-artifact@v4
