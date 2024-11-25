@@ -54,6 +54,8 @@ TEST_F(MainWindowTest, GetTagValue_MissingKey) {
     EXPECT_EQ(value, ""); // Очікується, що повертається пустий рядок
 }
 
+
+
 TEST_F(MainWindowTest, GetTagValue_InvalidKey) {
     QJsonObject json;
     json["con"] = "1";
@@ -66,6 +68,8 @@ TEST_F(MainWindowTest, GetTagValue_InvalidKey) {
     QString actual = mainWindow->getJsonValue(json, "invalid");
     EXPECT_EQ(actual, "");
 }
+
+
 
 
 // Tests for buildJSON
@@ -144,6 +148,8 @@ TEST_F(MainWindowTest, ParseJSON_EmptyJson_ReturnsEarly) {
 
 
 
+
+
 // // Tests for resetValues
 TEST_F(MainWindowTest, ResetValues_SetsToInitialState) {
     mainWindow->game_started = "1";
@@ -158,6 +164,11 @@ TEST_F(MainWindowTest, ResetValues_SetsToInitialState) {
         }
     }
 }
+
+
+
+
+
 
 
 
