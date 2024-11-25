@@ -7,11 +7,10 @@
 HANDLE hSerial;
 QString portArduino;
 
-QString connect_arduino, game_started, game_mode, ai_strategy, message, next_turn;
-QString board[3][3];
 
 
-void resetValues() {
+
+void MainWindow::resetValues() {
     // connect_arduino = "0";
     game_started = "0";
     // game_mode = "mva";
@@ -27,7 +26,7 @@ void resetValues() {
 }
 
 
-QString buildJSON() {
+QString MainWindow::buildJSON() {
     QJsonObject json;
     json["con"] = connect_arduino;
     json["gs"] = game_started;
@@ -53,7 +52,7 @@ QString buildJSON() {
     return doc.toJson(QJsonDocument::Indented);
 }
 
-QString getJsonValue(const QJsonObject& json, const QString& key) {
+QString MainWindow::getJsonValue(const QJsonObject& json, const QString& key) {
     return json.value(key).toString();
 }
 
@@ -376,7 +375,9 @@ bool MainWindow::connectArduino(const QString &portName)
     connect_arduino = "0";
     QString receivedJSON = sendArduino();
 
-    // QString conValue = getTagValue(receivedJSON, "con");
+    //QString getTagValue(const QString& jsonInput, const QString& key);
+
+    //QString conValue = getTagValue(receivedJSON, "con");
     // qDebug() << "conValue:" << conValue;
 
     parseJSON(receivedJSON);

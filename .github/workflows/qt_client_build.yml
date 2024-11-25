@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - develop
-      - feature/develop/task3
+      - feature/develop/task5
   pull_request:
     branches:
       - develop
@@ -38,10 +38,15 @@ jobs:
 
       - name: Deploy Qt dependencies
         run: |
-          windeployqt build/Release/Lab3_APKS.exe
+          windeployqt build/Release/client_lab3.exe
 
       - name: Save build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: lab3-client-executable
           path: build/Release
+
+      - name: Run Tests
+        run: |
+          cd build
+          ./Release/client_lab3_tests.exe
