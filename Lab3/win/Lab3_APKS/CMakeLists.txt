@@ -9,6 +9,11 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --coverage")
+    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+endif()
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 include_directories(${Qt${QT_VERSION_MAJOR}_INCLUDE_DIRS})
@@ -84,6 +89,11 @@ target_link_libraries(client_lab3_tests PRIVATE
     gtest gtest_main
     Qt${QT_VERSION_MAJOR}::Widgets
 )
+
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(client_lab3_tests PRIVATE --coverage)
+    target_link_options(client_lab3_tests PRIVATE --coverage)
+endif()
 
 # Add the test to CMake
 include(GoogleTest)
